@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { isURL } = require('validator');
 
 const urlSchema = new mongoose.Schema({
     shortID: {
@@ -8,7 +9,13 @@ const urlSchema = new mongoose.Schema({
     },
     redirectURL: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: function(v) {
+                return isURL(v, { require_protocol: true });
+            },
+            message: 'Not a valid URL. Please include http:// or https://'
+        }
     },
     cntClicks: [{timestamp: Number}],
 },

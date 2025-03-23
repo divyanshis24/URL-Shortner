@@ -2,10 +2,8 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const dbPassword = encodeURIComponent(process.env.DB_PASSWORD); 
-    const uri = `mongodb+srv://divyanshi15903:${dbPassword}@urldb.youdq.mongodb.net/?retryWrites=true&w=majority&appName=urlDB`;
 
-    await mongoose.connect(uri, {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true, 
       serverSelectionTimeoutMS: 10000, 
       family: 4 

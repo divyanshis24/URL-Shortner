@@ -2,6 +2,7 @@ const express = require('express');
 urlRouter = require('./routes/url');
 const connectDB  = require('./config/db');
 const URL = require('./models/url')
+require("dotenv").config();
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use("/url", urlRouter);
 app.get('/:shortID', async(req, res) => {
+
   const shortID = req.params.shortID;
   const entry = await URL.findOneAndUpdate({
     shortID
@@ -23,6 +25,7 @@ app.get('/:shortID', async(req, res) => {
 });
 res.redirect(entry.redirectURL);
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
