@@ -99,3 +99,6 @@ GET /:shortID
 
 **Response**:
 Redirects to the original long URL.
+
+Deployed URL: https://url-shortner-tkq1.onrender.com
+(This URL might not respond with OK status on the first run as it is deployed on a free server which doesnt supports runtime deployment. PLease wait for 3-4 mins as it redeploys the code.)
